@@ -1,0 +1,133 @@
+590 INFO: PyInstaller: 6.22.3, contrib hooks: 2026.8
+590 INFO: Python: 3.11.9
+655 INFO: Platform: Windows-10-10.0.19043-SP0
+655 INFO: Python environment: Z:\home\user\.cache\windows\python
+662 INFO: Removing temporary files and cleaning cache in C:\users\user\AppData\Local\pyinstaller
+1965 INFO: Module search paths (PYTHONPATH):
+['Z:\\home\\user\\.cache\\windows\\python\\python311.zip',
+ 'Z:\\home\\user\\.cache\\windows\\python',
+ 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages',
+ 'Z:\\home\\user\\NexusCamStudio',
+ 'Z:\\home\\user\\NexusCamStudio']
+3398 INFO: Appending 'datas' from .spec
+3406 INFO: checking Analysis
+3407 INFO: Building Analysis because Analysis-00.toc is non existent
+3407 INFO: Looking for Python shared library...
+3407 INFO: Using Python shared library: Z:\home\user\.cache\windows\python\python311.dll
+3407 INFO: Running Analysis Analysis-00.toc
+3407 INFO: Target bytecode optimization level: 0
+3407 INFO: Initializing module dependency graph...
+3409 INFO: Initializing module graph hook caches...
+3476 INFO: Analyzing modules for base_library.zip ...
+5820 INFO: Processing standard module hook 'hook-heapq.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+5873 INFO: Processing standard module hook 'hook-encodings.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+7103 INFO: Processing standard module hook 'hook-math.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+7289 INFO: Processing standard module hook 'hook-pickle.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+8360 INFO: Caching module dependency graph...
+8400 INFO: Analyzing Z:\home\user\NexusCamStudio\main.py
+8511 INFO: Processing standard module hook 'hook-_ctypes.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+8528 INFO: Processing standard module hook 'hook-PySide6.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+9025 INFO: Processing standard module hook 'hook-shiboken6.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+9148 INFO: Processing standard module hook 'hook-PySide6.QtNetwork.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+11097 INFO: Processing standard module hook 'hook-PySide6.QtCore.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+13033 INFO: Processing standard module hook 'hook-PySide6.QtWidgets.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+15039 INFO: Processing standard module hook 'hook-PySide6.QtGui.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+26227 INFO: Processing standard module hook 'hook-cv2.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+28094 INFO: Processing standard module hook 'hook-numpy.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+28884 INFO: Processing standard module hook 'hook-difflib.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+29026 INFO: Processing standard module hook 'hook-multiprocessing.util.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+29075 INFO: Processing standard module hook 'hook-xml.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+29533 INFO: Processing standard module hook 'hook-platform.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+29553 INFO: Processing standard module hook 'hook-sysconfig.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+31244 INFO: Processing standard module hook 'hook-webbrowser.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+31316 INFO: Processing standard module hook 'hook-psutil.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+32780 INFO: Processing standard module hook 'hook-sounddevice.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+32858 INFO: Processing standard module hook 'hook-soundcard.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\soundcard\\__pyinstaller'
+33091 INFO: Processing standard module hook 'hook-pycparser.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+33269 INFO: Processing standard module hook 'hook-setuptools.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+33276 INFO: SetuptoolsInfo: initializing cached setuptools info...
+35558 INFO: Processing pre-safe-import-module hook 'hook-distutils.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+35562 INFO: Processing pre-find-module-path hook 'hook-distutils.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\pre_find_module_path'
+36646 INFO: Processing standard module hook 'hook-distutils.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+36664 INFO: Processing standard module hook 'hook-distutils.util.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+36698 INFO: Processing standard module hook 'hook-_osx_support.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+36721 INFO: Processing pre-safe-import-module hook 'hook-packaging.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+36825 INFO: Processing pre-safe-import-module hook 'hook-typing_extensions.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+37055 INFO: Processing pre-safe-import-module hook 'hook-jaraco.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+37058 INFO: Setuptools: 'jaraco' appears to be a full setuptools-vendored copy - creating alias to 'setuptools._vendor.jaraco'!
+37071 INFO: Processing standard module hook 'hook-setuptools._vendor.jaraco.text.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+37075 INFO: Processing pre-safe-import-module hook 'hook-importlib_resources.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+37086 INFO: Processing pre-safe-import-module hook 'hook-backports.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+37089 INFO: Setuptools: 'backports' appears to be a full setuptools-vendored copy - creating alias to 'setuptools._vendor.backports'!
+37174 INFO: Processing pre-safe-import-module hook 'hook-more_itertools.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+37176 INFO: Setuptools: 'more_itertools' appears to be a setuptools-vendored copy - creating alias to 'setuptools._vendor.more_itertools'!
+37541 INFO: Processing pre-safe-import-module hook 'hook-tomli.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+37544 INFO: Setuptools: 'tomli' appears to be a setuptools-vendored copy - creating alias to 'setuptools._vendor.tomli'!
+38050 INFO: Processing pre-safe-import-module hook 'hook-wheel.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+39972 INFO: Processing standard module hook 'hook-av.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+41706 INFO: Processing standard module hook 'hook-cryptography.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+44430 INFO: hook-cryptography: cryptography does not seem to be using dynamically linked OpenSSL.
+45653 INFO: Processing standard module hook 'hook-dns.rdata.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+47246 INFO: Processing standard module hook 'hook-imageio_ffmpeg.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+47719 INFO: Processing standard module hook 'hook-PySide6.QtTest.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+48297 INFO: Analyzing hidden import 'av.__main__'
+48310 INFO: Analyzing hidden import 'av.audio.plane'
+48314 INFO: Analyzing hidden import 'av.buffer'
+48320 INFO: Analyzing hidden import 'av.container.pyio'
+48328 INFO: Analyzing hidden import 'av.container.streams'
+48335 INFO: Analyzing hidden import 'av.datasets'
+48341 INFO: Analyzing hidden import 'av.dictionary'
+48346 INFO: Analyzing hidden import 'av.filter'
+48371 INFO: Analyzing hidden import 'av.filter.context'
+48379 INFO: Analyzing hidden import 'av.filter.link'
+48387 INFO: Analyzing hidden import 'av.index'
+48394 INFO: Analyzing hidden import 'av.opaque'
+48399 INFO: Analyzing hidden import 'av.plane'
+48403 INFO: Analyzing hidden import 'av.stream'
+48416 INFO: Analyzing hidden import 'av.subtitles.subtitle'
+48428 INFO: Analyzing hidden import 'av.utils'
+48433 INFO: Analyzing hidden import 'av.video.plane'
+48443 INFO: Analyzing hidden import 'av.video.reformatter'
+48453 INFO: Processing module hooks (post-graph stage)...
+48834 WARNING: Hidden import "pycparser.lextab" not found!
+48835 WARNING: Hidden import "pycparser.yacctab" not found!
+49389 INFO: Performing binary vs. data reclassification (175 entries)
+49692 INFO: Looking for ctypes DLLs
+49809 INFO: Analyzing run-time hooks ...
+49814 INFO: Including run-time hook 'pyi_rth_inspect.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+49817 INFO: Including run-time hook 'pyi_rth_pkgutil.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+49823 INFO: Including run-time hook 'pyi_rth_multiprocessing.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+49826 INFO: Including run-time hook 'pyi_rth_setuptools.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+49829 INFO: Including run-time hook 'pyi_rth_pyside6.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+49831 INFO: Processing pre-find-module-path hook 'hook-_pyi_rth_utils.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks\\pre_find_module_path'
+49838 INFO: Processing standard module hook 'hook-_pyi_rth_utils.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PyInstaller\\hooks'
+49847 INFO: Including run-time hook 'pyi_rth_cryptography_openssl.py' from 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\rthooks'
+49866 INFO: Creating base_library.zip...
+49888 INFO: Looking for dynamic libraries
+Z:\home\user\.cache\windows\python\Lib\site-packages\PyInstaller\building\build_main.py:227: UserWarning: The numpy.array_api submodule is still experimental. See NEP 47.
+  __import__(package)
+53818 INFO: Extra DLL search directories (AddDllDirectory): ['Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\shiboken6', 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\cv2_enumerate_cameras.libs', 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\numpy.libs', 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\cv2\\../../x64/vc14/bin', 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\av.libs', 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\google_crc32c\\extra-dll']
+53819 INFO: Extra DLL search directories (PATH): ['Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\cv2\\../../x64/vc14/bin', 'Z:\\home\\user\\.cache\\windows\\python\\Lib\\site-packages\\PySide6']
+58266 INFO: Warnings written to Z:\home\user\NexusCamStudio\build\NexusCamStudio\warn-NexusCamStudio.txt
+58358 INFO: Graph cross-reference written to Z:\home\user\NexusCamStudio\build\NexusCamStudio\xref-NexusCamStudio.html
+58566 INFO: checking PYZ
+58566 INFO: Building PYZ because PYZ-00.toc is non existent
+58566 INFO: Building PYZ (ZlibArchive) Z:\home\user\NexusCamStudio\build\NexusCamStudio\PYZ-00.pyz
+59268 INFO: Building PYZ (ZlibArchive) Z:\home\user\NexusCamStudio\build\NexusCamStudio\PYZ-00.pyz completed successfully.
+59298 INFO: checking PKG
+59298 INFO: Building PKG because PKG-00.toc is non existent
+59298 INFO: Building PKG (CArchive) NexusCamStudio.pkg
+89709 INFO: Building PKG (CArchive) NexusCamStudio.pkg completed successfully.
+89715 INFO: Bootloader Z:\home\user\.cache\windows\python\Lib\site-packages\PyInstaller\bootloader\Windows-64bit-intel\runw.exe
+89715 INFO: checking EXE
+89715 INFO: Building EXE because EXE-00.toc is non existent
+89715 INFO: Building EXE from EXE-00.toc
+89722 INFO: Copying bootloader EXE to Z:\home\user\NexusCamStudio\dist\NexusCamStudio.exe
+89730 INFO: Copying icon to EXE
+89734 INFO: Copying version information to EXE
+89741 INFO: Copying 0 resources to EXE
+89741 INFO: Embedding manifest in EXE
+89745 INFO: Appending PKG archive to EXE
+89848 INFO: Fixing EXE headers
+90410 INFO: Building EXE from EXE-00.toc completed successfully.
+90417 INFO: Build complete! The results are available in: Z:\home\user\NexusCamStudio\dist

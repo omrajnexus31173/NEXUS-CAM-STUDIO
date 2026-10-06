@@ -1,0 +1,26 @@
+[
+  {
+    "format": "mp4",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "size": 29324,
+    "result": "PASS",
+    "note": "Real encode/mix/mux/decode; synthetic PCM fixture, not hardware audio."
+  },
+  {
+    "format": "mkv",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "size": 28154,
+    "result": "PASS",
+    "note": "Real encode/mix/mux/decode; synthetic PCM fixture, not hardware audio."
+  },
+  {
+    "format": "webm",
+    "video_codec": "vp9",
+    "audio_codec": "opus",
+    "size": 27688,
+    "result": "PASS",
+    "note": "Real encode/mix/mux/decode; synthetic PCM fixture, not hardware audio."
+  }
+]

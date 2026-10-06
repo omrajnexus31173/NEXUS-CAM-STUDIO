@@ -1,0 +1,89 @@
+{
+  "environment": "runtime verification; hardware must be verified separately",
+  "checks": {
+    "native_application_launch": true,
+    "real_screen_capture": true,
+    "composed_screenshot": "Z:\\home\\user\\test-artifacts\\NexusCam_Screenshot_2026-10-05_20-56-21.png",
+    "real_recording_timer": "00:00:01",
+    "pause_excludes_time": true,
+    "real_mp4_export": {
+      "path": "Z:\\home\\user\\test-artifacts\\NexusCam_2026-10-05_20-56-21.mp4",
+      "bytes": 344053,
+      "duration_seconds": 2.1333333333333333,
+      "codec": "h264",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "fps": 30.0,
+      "preview_to_export_mean_absolute_pixel_error": 0.8929
+    },
+    "saved_history": true,
+    "phone_server_https": "Nexus Cam Studio",
+    "phone_qr_generated": true,
+    "phone_real_webrtc_frames_in_preview": true,
+    "phone_input_note": "Received external WebRTC video; this does NOT identify or prove Android hardware.",
+    "live_overlay_move_resize": true,
+    "phone_overlay_burned_into_export": {
+      "path": "Z:\\home\\user\\test-artifacts\\NexusCam_2026-10-05_20-56-28.mp4",
+      "bytes": 338029,
+      "duration_seconds": 1.0666666666666667,
+      "codec": "h264",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "fps": 30.0,
+      "preview_to_export_mean_absolute_pixel_error": 0.9664
+    }
+  },
+  "hardware": {
+    "webcam": "NOT TESTED",
+    "microphone": "NOT TESTED",
+    "system_audio": "NOT TESTED",
+    "android_same_wifi": "NOT TESTED"
+  },
+  "state": "PASS_SOFTWARE_CHECKS",
+  "phone_info": {
+    "ip": "169.254.0.21",
+    "http_port": 8765,
+    "https_port": 8766
+  },
+  "diagnostics": [
+    [
+      "Application",
+      "PASS",
+      "Qt 6.8.3 running; local data folder is writable: Z:\\home\\user\\.cache\\runtime-windows-final"
+    ],
+    [
+      "Camera",
+      "UNAVAILABLE",
+      "No webcam detected. Connect one and click Refresh Devices."
+    ],
+    [
+      "Microphone",
+      "UNAVAILABLE",
+      "No microphone detected."
+    ],
+    [
+      "Screen Capture",
+      "PASS",
+      "Real desktop capture: 1600 \u00d7 1000"
+    ],
+    [
+      "FFmpeg",
+      "PASS",
+      "libx264 \u2192 MP4 \u00b7 C:\\users\\user\\AppData\\Local\\Temp\\_MEI000000202\\ffmpeg\\ffmpeg.exe"
+    ],
+    [
+      "Phone Server",
+      "PASS",
+      "HTTPS helper responded with a verified local certificate: {\"server\": \"Nexus Cam Studio\", \"connected\": false, \"transport\": \"WebRTC\"}"
+    ],
+    [
+      "Recording",
+      "PASS",
+      "Encoded and decoded 5 frames of the live composition (7,460 bytes). Hardware audio not tested by this probe."
+    ]
+  ]
+}

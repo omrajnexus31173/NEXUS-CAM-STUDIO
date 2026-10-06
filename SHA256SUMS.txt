@@ -1,0 +1,1 @@
+44ea5d14b552d53c4c1dd8ba429860c24db6d61d6922322abd424227ade8dc32  dist/NexusCamStudio.exe

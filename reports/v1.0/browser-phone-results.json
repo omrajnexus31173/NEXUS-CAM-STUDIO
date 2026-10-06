@@ -1,0 +1,12 @@
+{
+  "environment": "Chromium with an explicit synthetic camera fixture; local real WebRTC transport",
+  "android_hardware": "NOT TESTED",
+  "same_wifi": "NOT TESTED",
+  "checks": {
+    "start_camera_button_real_media_and_webrtc": true,
+    "switch_camera_reopens_track_and_reconnects": true,
+    "front_back_note": "New browser track verified; physical front/back sensors cannot be verified with a synthetic device.",
+    "stop_camera_stops_tracks": true
+  },
+  "result": "PASS"
+}

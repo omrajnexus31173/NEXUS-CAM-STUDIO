@@ -1,0 +1,34 @@
+NEXUS CAM STUDIO 1.1 — Windows x64 portable release
+
+1. EXTRACT the whole ZIP into a new folder. Do not run from inside the archive.
+2. Close the old app; open StartNexusCamStudio.cmd or dist\NexusCamStudio.exe.
+   The window title says 1.1. Existing per-user settings/history are retained.
+3. Choose the live camera/screen, actual audio sources and output folder.
+4. Review live screen/camera/audio, then START RECORDING.
+5. PAUSE / RESUME / STOP. Wait for Recording Saved before closing.
+
+PHONE USB MICROPHONE:
+Plug USB-C mic/receiver into phone FIRST → same Wi-Fi → Connect Phone →
+scan NEW HTTPS QR → allow camera AND microphone → Allow / Refresh
+Microphones → select actual USB input (if exposed) → USB / Raw → START.
+On PC: Use Phone Mic Only. Check the real Phone Microphone meter.
+System Audio is left unchanged; turn it off if you want only phone audio.
+See UPDATE_1.1.txt for routing, clipping and microphone-only instructions.
+
+If HTTPS is untrusted: open the displayed HTTP setup guide first, download
+this PC's CA certificate, install it as a user CA in Android settings,
+restart Chrome, and reopen the HTTPS link. Plain HTTP cannot capture mobile
+camera/mic. See README.md for full instructions and policy/firewall limits.
+
+Native EXE includes Python/Qt/FFmpeg. No Python or Node.js installation is
+required to run it. Source launch/rebuild scripts require Python 3.11.
+
+TEST SCOPE:
+Genuine Windows EXE built/tested under Wine. Real desktop capture, WebRTC
+transport and actual audio/video exports tested with explicit software
+camera/audio fixtures. Physical Android USB mic routing, real Windows
+webcam/WASAPI devices, and bare-metal Windows 10/11 were NOT available.
+Read TEST_REPORT.md; no guarantee of repairing already-clipped audio.
+
+Window mode captures VISIBLE window bounds only; hidden/minimized-window
+capture is not implemented. Release is unsigned; verify SHA256SUMS.txt.

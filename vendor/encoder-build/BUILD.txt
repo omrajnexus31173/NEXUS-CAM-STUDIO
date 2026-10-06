@@ -1,0 +1,1 @@
+FFmpeg 7.1.5 + x264 stable + libvpx 1.15.0 + Opus 1.5.2; MinGW-w64 static Windows x64 build.

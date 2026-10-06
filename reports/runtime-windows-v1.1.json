@@ -1,0 +1,121 @@
+{
+  "release": "1.1.0",
+  "environment": "runtime verification; hardware must be verified separately",
+  "checks": {
+    "native_application_launch": true,
+    "real_screen_capture": true,
+    "composed_screenshot": "Z:\\home\\user\\.cache\\verify-windows-v1.1-final\\videos\\NexusCam_Screenshot_2026-10-06_10-27-38.png",
+    "real_recording_timer": "00:00:01",
+    "pause_excludes_time": true,
+    "real_mp4_export": {
+      "path": "Z:\\home\\user\\.cache\\verify-windows-v1.1-final\\videos\\NexusCam_2026-10-06_10-27-39.mp4",
+      "bytes": 477000,
+      "duration_seconds": 2.066666666666667,
+      "codec": "h264",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "fps": 30.0,
+      "preview_to_export_mean_absolute_pixel_error": 0.9209
+    },
+    "saved_history": true,
+    "phone_server_https": "Nexus Cam Studio",
+    "phone_qr_generated": true,
+    "phone_real_webrtc_frames_in_preview": true,
+    "phone_microphone_real_pcm_and_meter": {
+      "recent_real_pcm": true,
+      "rms_meter_value": 71,
+      "phone_mic_selected": true,
+      "pc_mic_off": true
+    },
+    "phone_input_note": "Received external WebRTC audio/video; this does NOT identify or prove Android/USB hardware.",
+    "phone_microphone_diagnostic_while_receiving": [
+      "PASS",
+      "Real 48 kHz phone PCM packets received \u00b7 Fake Default Audio Input. USB hardware identity is browser-reported, not independently verified."
+    ],
+    "live_overlay_move_resize": true,
+    "phone_audio_video_shared_pause_resume": true,
+    "phone_overlay_burned_into_export": {
+      "path": "Z:\\home\\user\\.cache\\verify-windows-v1.1-final\\videos\\NexusCam_2026-10-06_10-27-51.mp4",
+      "bytes": 661632,
+      "duration_seconds": 2.4,
+      "codec": "h264",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "fps": 30.0,
+      "preview_to_export_mean_absolute_pixel_error": 0.987
+    },
+    "phone_audio_burned_into_export": {
+      "codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_samples": 115712,
+      "rms": 0.176023,
+      "peak": 0.259878,
+      "dominant_frequency_hz": 440.127,
+      "maximum_internal_silent_gap_seconds": 0.0,
+      "expected_external_fixture_frequency_hz": 440.0,
+      "hardware_note": "External sender identity/physical USB routing NOT verified"
+    },
+    "frozen_exe_clean_shutdown_exit_code": 0,
+    "phone_ports_released_after_shutdown": true
+  },
+  "hardware": {
+    "webcam": "NOT TESTED",
+    "microphone": "NOT TESTED",
+    "system_audio": "NOT TESTED",
+    "android_same_wifi": "NOT TESTED",
+    "android_usb_microphone": "NOT TESTED"
+  },
+  "state": "PASS_SOFTWARE_CHECKS",
+  "phone_info": {
+    "ip": "169.254.0.21",
+    "http_port": 8765,
+    "https_port": 8766
+  },
+  "diagnostics": [
+    [
+      "Application",
+      "PASS",
+      "Qt 6.8.3 running; local data folder is writable: Z:\\home\\user\\.cache\\verify-windows-v1.1-final\\data"
+    ],
+    [
+      "Camera",
+      "UNAVAILABLE",
+      "No webcam detected. Connect one and click Refresh Devices."
+    ],
+    [
+      "Microphone",
+      "UNAVAILABLE",
+      "No microphone detected."
+    ],
+    [
+      "Phone Microphone",
+      "UNAVAILABLE",
+      "No phone audio packets. Enable Send microphone, allow permission, and select the USB input on the phone."
+    ],
+    [
+      "Screen Capture",
+      "PASS",
+      "Real desktop capture: 1600 \u00d7 1000"
+    ],
+    [
+      "FFmpeg",
+      "PASS",
+      "libx264 \u2192 MP4 \u00b7 C:\\users\\user\\AppData\\Local\\Temp\\_MEI000000202\\ffmpeg\\ffmpeg.exe"
+    ],
+    [
+      "Phone Server",
+      "PASS",
+      "HTTPS helper responded with a verified local certificate: {\"server\": \"Nexus Cam Studio\", \"connected\": false, \"video_connected\": false, \"audio_connected\": false, \"audio_info\": {}, \"transport\": \"WebRTC\"}"
+    ],
+    [
+      "Recording",
+      "PASS",
+      "Encoded and decoded 5 frames of the live composition (7,553 bytes). Hardware audio not tested by this probe."
+    ]
+  ]
+}

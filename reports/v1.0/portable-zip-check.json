@@ -1,0 +1,10 @@
+{
+  "zip_crc": "PASS",
+  "required_files": "PASS",
+  "extracted_exe_sha256": "5703c5d633511b5190ca37f1ab70c81a44be0942da53d8f945b2f7a7075210e3",
+  "extracted_exe_launch": "PASS",
+  "exit_code": 0,
+  "working_directory": "empty directory; path with spaces tested",
+  "environment": "Windows PE under Wine 10; not bare-metal Windows",
+  "private_certificates_or_keys_in_zip": false
+}

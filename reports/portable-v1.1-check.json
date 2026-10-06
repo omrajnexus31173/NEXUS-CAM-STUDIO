@@ -1,0 +1,12 @@
+{
+  "release": "1.1.0",
+  "zip_crc": "PASS",
+  "required_files": "PASS",
+  "private_keys_and_user_data": "NONE",
+  "exe_bytes": 116087356,
+  "exe_sha256": "44ea5d14b552d53c4c1dd8ba429860c24db6d61d6922322abd424227ade8dc32",
+  "portable_extracted_startup": "PASS",
+  "portable_startup_environment": "Windows EXE under Wine; isolated folder with spaces, no source files",
+  "portable_exit_code": 0,
+  "real_ui_snapshot_created": true
+}

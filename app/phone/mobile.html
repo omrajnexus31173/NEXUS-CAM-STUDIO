@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Nexus · Phone camera + USB microphone</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b101b;color:#eef1fa;font:16px system-ui,sans-serif;padding:26px 20px}main{max-width:540px;margin:auto}.brand{display:flex;align-items:center;gap:12px;letter-spacing:2px;font-size:13px;font-weight:800}.mark{border:2px solid #a6a3ff;border-radius:12px;padding:9px;color:#a6a3ff}h1{font-size:27px;margin-bottom:8px}p{line-height:1.6;color:#a6b2c6;font-size:14px}.preview{background:#141c2a;border:1px solid #29334a;border-radius:18px;min-height:220px;margin:20px 0;position:relative;overflow:hidden}video{width:100%;display:block;min-height:220px;object-fit:cover}#idle{position:absolute;inset:0;display:grid;place-items:center;color:#8995ad}.panel{background:#141d2d;border:1px solid #2e3b53;border-radius:14px;padding:16px;margin:16px 0}.row{display:flex;gap:12px;align-items:center;margin:10px 0}.row label{flex:1}label{font-size:14px;color:#c3cee1}input[type=checkbox]{accent-color:#9784f7;width:17px;height:17px}select{width:100%;color:#eaf0ff;background:#0d1524;border:1px solid #3d4d69;padding:12px;border-radius:9px;margin-top:6px;font:14px system-ui}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px}button{border:1px solid #303c56;color:#f5f6ff;background:#1b263b;font:700 14px system-ui;padding:14px;border-radius:10px;cursor:pointer}button.primary{background:#8577f4;border-color:#8577f4;color:#fff;grid-column:span 2}button:disabled{opacity:.45}#status{padding:14px;border:1px solid #2f3d52;border-radius:12px;background:#131c2b;font-size:14px;white-space:pre-line;line-height:1.6}.meter{height:9px;background:#2a354c;border-radius:5px;overflow:hidden;margin:12px 0 7px}#level{height:100%;width:0;background:#75dbb8;transition:width .06s}#micinfo,#micnote,#leveltext{font-size:12px;color:#9fabbd;line-height:1.6;overflow-wrap:anywhere}.note{margin-top:20px;font-size:12px}a{color:#c2b6ff}small{color:#7988a2}
+</style></head><body><main>
+<div class="brand"><span class="mark">N</span>NEXUS CAM STUDIO · 1.1</div><h1>Camera + your USB microphone.</h1><p>Plug the USB-C microphone/receiver into your phone before starting. Video and audio stay on your local network. Keep the phone awake.</p>
+<div class="preview"><video id="preview" autoplay muted playsinline></video><div id="idle">Camera is stopped</div></div>
+<div class="panel"><div class="row"><label><input id="sendvideo" type="checkbox" checked> Send camera</label><label><input id="sendmic" type="checkbox" checked> Send microphone</label></div>
+<label for="micdevice">MICROPHONE INPUT</label><select id="micdevice"><option value="">Default microphone · Android routing</option></select>
+<div class="row"><button id="refreshmic">Allow / Refresh Microphones</button></div>
+<label for="processing">PROCESSING</label><select id="processing"><option value="raw">USB / Raw · no auto gain, noise suppression or echo processing</option><option value="voice">Voice cleanup · echo/noise reduction, no auto gain</option></select>
+<label for="channels">CHANNELS</label><select id="channels"><option value="1">Mono voice (recommended)</option><option value="2">Stereo · genuine two-channel input</option></select>
+<div class="meter"><div id="level"></div></div><div id="leveltext">Microphone is stopped</div><div id="micinfo">Allow microphone access to see actual device names.</div>
+<p id="micnote">Only microphones exposed by the browser are listed—no invented USB entries. If Android exposes only Default, USB routing is controlled by Android. Test the meter before recording.</p>
+</div>
+<div id="status" role="status">Ready to connect to your PC.</div><br><div class="buttons"><button id="start" class="primary">START CAMERA</button><button id="switch" disabled>SWITCH CAMERA</button><button id="stop" disabled>STOP CAMERA</button></div>
+<p class="note">On the PC, choose <b>Use Phone Mic Only</b> to avoid double voice from the PC mic. If the input clips, lower the <b>USB microphone/receiver hardware gain</b>; lowering the desktop volume cannot repair already-clipped audio. No local speaker monitoring is used.</p>
+<p class="note">Camera or microphone blocked? Trust this PC's Nexus local certificate using the HTTP setup guide, then reopen this HTTPS page. Allow camera/microphone access and Nexus on Private networks. Both devices must share the same non-guest Wi-Fi.</p><small>Local WebRTC · encrypted audio/video · Opus 48 kHz · no cloud</small>
+</main><script>
+'use strict';
+const token=new URLSearchParams(location.search).get('token')||'';
+const $=id=>document.getElementById(id);
+let pc=null,stream=null,facing='user',busy=false,audioContext=null,meterTimer=null;
+const endpoint=path=>path+'?token='+encodeURIComponent(token);
+function status(text){$('status').textContent=text;}
+function controls(active){$('start').disabled=active||busy;$('switch').disabled=!active||busy||!stream?.getVideoTracks().length;$('stop').disabled=!active||busy;$('refreshmic').disabled=busy;['micdevice','processing','channels','sendvideo','sendmic'].forEach(id=>$(id).disabled=busy);}
+function cameraConstraints(){return {facingMode:{ideal:facing},width:{ideal:960},height:{ideal:540},frameRate:{ideal:30,max:30}};}
+function micConstraints(){const clean=$('processing').value==='voice';const options={echoCancellation:clean,noiseSuppression:clean,autoGainControl:false,sampleRate:{ideal:48000},channelCount:{ideal:Number($('channels').value)}};if($('micdevice').value)options.deviceId={exact:$('micdevice').value};return options;}
+function audioInfo(){const t=stream?.getAudioTracks()[0];if(!t)return {enabled:false};const s=t.getSettings();return {enabled:true,label:t.label,deviceId:s.deviceId||'',sampleRate:s.sampleRate||null,channels:s.channelCount||null,echoCancellation:s.echoCancellation,noiseSuppression:s.noiseSuppression,autoGainControl:s.autoGainControl,processing:$('processing').value};}
+function describeMic(){const info=audioInfo();if(!info.enabled){$('micinfo').textContent='No microphone track is being sent.';return;}$('micinfo').textContent='Sending: '+(info.label||'Android default input')+' · '+(info.sampleRate||'browser-rate')+' Hz · '+(info.channels||'browser')+' channel(s)';if($('processing').value==='raw'&&(info.echoCancellation===true||info.noiseSuppression===true||info.autoGainControl===true))$('micinfo').textContent+=' · Warning: this browser did not disable all processing.';}
+async function enumerateMics(requestPermission=false){let temporary=null;try{if(requestPermission&&!stream?.getAudioTracks().length)temporary=await navigator.mediaDevices.getUserMedia({audio:micConstraints(),video:false});const old=$('micdevice').value;const inputs=(await navigator.mediaDevices.enumerateDevices()).filter(d=>d.kind==='audioinput');$('micdevice').replaceChildren(new Option('Default microphone · Android routing',''));inputs.forEach((d,i)=>$('micdevice').add(new Option(d.label||'Microphone '+(i+1),d.deviceId)));if([...$('micdevice').options].some(o=>o.value===old))$('micdevice').value=old;if(inputs.length<=1)$('micnote').textContent='This browser exposes only one/default input. Android decides whether it is the USB mic. No software can guarantee a separate USB selector when the browser does not expose one.';}finally{temporary?.getTracks().forEach(t=>t.stop());}}
+function stopMeter(){if(meterTimer)clearInterval(meterTimer);meterTimer=null;if(audioContext){audioContext.close().catch(()=>{});audioContext=null;}$('level').style.width='0%';$('leveltext').textContent='Microphone is stopped';}
+async function startMeter(){stopMeter();const track=stream?.getAudioTracks()[0];if(!track)return;const AC=window.AudioContext||window.webkitAudioContext;if(!AC){$('leveltext').textContent='Local meter unavailable; check the real PC phone mic meter.';return;}audioContext=new AC();await audioContext.resume();const source=audioContext.createMediaStreamSource(new MediaStream([track]));const analyser=audioContext.createAnalyser();analyser.fftSize=2048;source.connect(analyser);const samples=new Float32Array(analyser.fftSize);meterTimer=setInterval(()=>{analyser.getFloatTimeDomainData(samples);let sum=0,peak=0;for(const v of samples){sum+=v*v;peak=Math.max(peak,Math.abs(v));}const rms=Math.sqrt(sum/samples.length),db=20*Math.log10(Math.max(rms,1e-6)),level=Math.max(0,Math.min(1,(db+60)/60));$('level').style.width=(100*level)+'%';$('level').style.background=peak>=.985?'#f18898':'#75dbb8';$('leveltext').textContent=peak>=.985?'CLIPPING — lower USB hardware gain':('Live microphone · '+Math.round(db)+' dBFS');},90);}
+async function stopCamera(notify=true){stopMeter();if(stream){stream.getTracks().forEach(t=>t.stop());stream=null;}if(pc){pc.onconnectionstatechange=null;pc.close();pc=null;}$('preview').srcObject=null;$('idle').style.display='grid';$('idle').textContent='Camera is stopped';controls(false);if(notify){try{await fetch(endpoint('/disconnect'),{method:'POST'});}catch(e){status('Stopped. PC is unreachable.');return;}}status('Camera and microphone stopped.');}
+function gathering(peer){return new Promise((resolve,reject)=>{if(peer.iceGatheringState==='complete'){resolve();return;}const timer=setTimeout(()=>reject(new Error('Local candidate discovery timed out.')),12000);peer.addEventListener('icegatheringstatechange',function changed(){if(peer.iceGatheringState==='complete'){clearTimeout(timer);peer.removeEventListener('icegatheringstatechange',changed);resolve();}});});}
+function highQualityOpus(sdp){const lines=sdp.split('\r\n');const map=lines.find(l=>/^a=rtpmap:\d+ opus\/48000/i.test(l));if(!map)return sdp;const pt=map.match(/^a=rtpmap:(\d+)/)[1],prefix='a=fmtp:'+pt+' ';const index=lines.findIndex(l=>l.startsWith(prefix));let params={};if(index>=0)lines[index].slice(prefix.length).split(';').forEach(p=>{const kv=p.trim().split('=');if(kv[0])params[kv[0]]=kv[1]||'';});Object.assign(params,{maxaveragebitrate:'192000',useinbandfec:'1',usedtx:'0',stereo:$('channels').value==='2'?'1':'0','sprop-stereo':$('channels').value==='2'?'1':'0'});const value=prefix+Object.entries(params).map(([k,v])=>k+'='+v).join(';');if(index>=0)lines[index]=value;else lines.splice(lines.indexOf(map)+1,0,value);return lines.join('\r\n');}
+async function startCamera(){if(busy)return;busy=true;controls(false);try{await stopCamera(false);if(!window.isSecureContext||!navigator.mediaDevices)throw new Error('Trusted HTTPS is required; install the PC local certificate using its HTTP guide.');if(!$('sendvideo').checked&&!$('sendmic').checked)throw new Error('Enable camera and/or microphone.');status('Requesting camera / microphone permission…');stream=await navigator.mediaDevices.getUserMedia({video:$('sendvideo').checked?cameraConstraints():false,audio:$('sendmic').checked?micConstraints():false});$('preview').srcObject=stream;$('preview').style.transform=facing==='user'?'scaleX(-1)':'none';$('idle').style.display=stream.getVideoTracks().length?'none':'grid';$('idle').textContent='Microphone-only stream';await enumerateMics(false);describeMic();await startMeter();pc=new RTCPeerConnection({iceServers:[]});const peer=pc;stream.getTracks().forEach(track=>peer.addTrack(track,stream));peer.onconnectionstatechange=()=>{if(pc!==peer)return;const state=peer.connectionState;if(state==='connected')status('PHONE CONNECTED ✓\n'+(stream.getVideoTracks().length?(stream.getAudioTracks().length?'Video + microphone streaming to PC.':'Video only — microphone is off.'):'Microphone-only audio streaming to PC.'));else if(state==='failed'||state==='disconnected')status('Connection lost. Check Wi-Fi/firewall; STOP then START to reconnect.');};status('Connecting to your PC…');let offer=await peer.createOffer();offer.sdp=highQualityOpus(offer.sdp);await peer.setLocalDescription(offer);await gathering(peer);const reply=await fetch(endpoint('/offer'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sdp:peer.localDescription.sdp,type:peer.localDescription.type,audioInfo:audioInfo()})});if(!reply.ok)throw new Error(await reply.text());await peer.setRemoteDescription(await reply.json());if(peer.connectionState!=='connected')status('Waiting for live connection…');}catch(error){await stopCamera(false);status('Unable to start: '+error.message+'\nAllow microphone/camera access. If a selected USB device disappeared, reconnect it and Refresh Microphones.');}finally{busy=false;controls(!!stream);}}
+async function switchCamera(){
+  if(busy||!stream?.getVideoTracks().length)return;
+  busy=true;controls(true);let fresh=null;
+  const previous=facing,old=stream.getVideoTracks()[0],sender=pc.getSenders().find(s=>s.track?.kind==='video');
+  try{
+    facing=facing==='user'?'environment':'user';status('Switching camera; microphone stays connected…');
+    try{fresh=await navigator.mediaDevices.getUserMedia({video:cameraConstraints(),audio:false});}
+    catch(e){
+      if(!['NotReadableError','AbortError'].includes(e.name))throw e;
+      // Some Android drivers cannot open two cameras at once. Release video ONLY.
+      old.stop();stream.removeTrack(old);
+      fresh=await navigator.mediaDevices.getUserMedia({video:cameraConstraints(),audio:false});
+    }
+    const next=fresh.getVideoTracks()[0];await sender.replaceTrack(next);
+    stream.removeTrack(old);old.stop();stream.addTrack(next);
+    $('preview').srcObject=stream;$('preview').style.transform=facing==='user'?'scaleX(-1)':'none';
+    status('PHONE CONNECTED ✓\nCamera switched; microphone continues.');
+  }catch(e){
+    fresh?.getTracks().forEach(t=>t.stop());facing=previous;
+    if(old.readyState==='ended'){
+      try{const fallback=await navigator.mediaDevices.getUserMedia({video:cameraConstraints(),audio:false});const track=fallback.getVideoTracks()[0];await sender.replaceTrack(track);stream.addTrack(track);$('preview').srcObject=stream;}
+      catch(restore){status('Camera unavailable: '+restore.message+'\nMicrophone is still streaming. STOP then START to restore video.');return;}
+    }
+    status('Camera switch failed: '+e.message+'\nPrevious camera retained; microphone continues.');
+  }finally{busy=false;controls(!!stream);}
+}
+async function changeMicrophone(){
+  if(busy||!stream||!$('sendmic').checked)return;
+  const sender=pc?.getSenders().find(s=>s.track?.kind==='audio');
+  if(!sender){await startCamera();return;}
+  busy=true;controls(true);let fresh=null,replaced=false;
+  try{
+    status('Opening selected microphone; camera stays connected…');
+    fresh=await navigator.mediaDevices.getUserMedia({audio:micConstraints(),video:false});
+    const next=fresh.getAudioTracks()[0],old=stream.getAudioTracks()[0];
+    await sender.replaceTrack(next);replaced=true;
+    if(old){stream.removeTrack(old);old.stop();}
+    stream.addTrack(next);$('preview').srcObject=stream;
+    describeMic();await startMeter();
+    const response=await fetch(endpoint('/audio-info'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(audioInfo())});
+    if(!response.ok)throw new Error('Input changed, but PC microphone metadata could not be updated.');
+    status('PHONE CONNECTED ✓\nSelected microphone is streaming; camera continues.');
+  }catch(e){
+    if(!replaced)fresh?.getTracks().forEach(t=>t.stop());
+    status('Microphone change failed: '+e.message+'\nThe previous input is retained when possible. STOP then START if Android requires the old input to be released.');
+  }finally{busy=false;controls(!!stream);}
+}
+$('start').onclick=startCamera;$('switch').onclick=switchCamera;$('stop').onclick=()=>stopCamera();$('refreshmic').onclick=async()=>{try{await enumerateMics(true);status('Microphones refreshed. Choose the USB input if exposed, then START.');}catch(e){status('Microphone access unavailable: '+e.message);}};
+['micdevice','processing','channels'].forEach(id=>$(id).onchange=changeMicrophone);['sendvideo','sendmic'].forEach(id=>$(id).onchange=()=>{if(stream)startCamera();});
+navigator.mediaDevices?.addEventListener('devicechange',()=>enumerateMics(false).catch(()=>{}));window.addEventListener('pagehide',()=>{stopMeter();stream?.getTracks().forEach(t=>t.stop());pc?.close();});
+if(!token){status('Pairing token missing. Scan the QR from your PC.');$('start').disabled=true;}
+</script></body></html>

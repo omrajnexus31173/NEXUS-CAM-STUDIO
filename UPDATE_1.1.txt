@@ -1,0 +1,47 @@
+NEXUS CAM STUDIO 1.1 — PHONE USB MICROPHONE UPDATE
+
+WHY:
+The previous phone page sent VIDEO ONLY. This update actually sends and
+records the microphone exposed by your phone's browser, separately from
+your PC mic. It also fixes packet-jitter/backlog timing that could cut audio.
+
+UPDATE SAFELY:
+1. Close the old Nexus app completely.
+2. Extract NexusCamStudio-Windows-v1.1.zip into a NEW folder.
+3. Launch StartNexusCamStudio.cmd (or dist\NexusCamStudio.exe).
+   Check the app window title says 1.1.
+Existing settings, history, output folder and local CA stay in your Windows
+user profile. This package does not delete or overwrite your recordings.
+
+USB-C MIC SETUP:
+1. Connect the USB mic/receiver to the Android phone before opening Chrome.
+2. On the PC, Connect Phone and scan the NEW secure QR. Use the same Wi-Fi.
+3. Allow camera AND microphone access. On the phone page, tap
+   Allow / Refresh Microphones and select the real USB input if listed.
+4. Keep Send microphone checked. Use USB / Raw and Mono voice first.
+5. Tap START CAMERA. Speak into the external mic. Both real mic meters
+   (phone and desktop Phone Microphone) should move.
+6. On the PC, Use Phone Mic Only keeps PC microphone OFF (no doubled voice).
+   System Audio is unchanged; turn it off too if you want only phone sound.
+7. Record and play a 10–15 second clip before recording an important session.
+
+IF ONLY DEFAULT IS LISTED:
+Android/Chrome may expose only its Default input. Android controls USB
+routing; Nexus cannot invent a separate USB choice. Confirm the external
+mic is really being used. Check OTG/cable/power and Android compatibility.
+
+IF AUDIO IS STILL DISTORTED:
+Use USB / Raw. If a red clipping warning appears, reduce gain on the USB
+microphone/receiver HARDWARE or move it farther away. The PC volume slider
+cannot restore already-clipped sound. Keep the phone awake, use stable Wi-Fi,
+and avoid recording the same voice from multiple sources.
+
+AUDIO-ONLY PHONE:
+Uncheck Send camera on the phone; keep Send microphone on. Record your PC
+screen, or select your PC camera again. Switching the phone's camera does
+not restart its microphone; changing the actual mic replaces audio only.
+
+VERIFICATION:
+Software fixtures tested real WebRTC audio reception and actual saved AAC
+sound, including pause/resume and delayed-packet retention. No physical
+Android USB mic was available in this environment. Read TEST_REPORT.md.

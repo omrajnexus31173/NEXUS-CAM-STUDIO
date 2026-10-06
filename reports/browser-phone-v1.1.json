@@ -1,0 +1,39 @@
+{
+  "release": "1.1.0",
+  "environment": "Chromium explicit synthetic camera + 440 Hz WAV microphone; real local WebRTC",
+  "android_hardware": "NOT TESTED",
+  "usb_microphone_hardware": "NOT TESTED",
+  "same_wifi": "NOT TESTED",
+  "checks": {
+    "microphone_picker_lists_only_actual_browser_devices": true,
+    "start_camera_and_microphone_real_getusermedia_and_webrtc": true,
+    "actual_local_audio_analyser_meter": true,
+    "raw_mode_disables_browser_processing_on_test_browser": {
+      "echoCancellation": false,
+      "noiseSuppression": false,
+      "autoGainControl": false,
+      "sampleRate": 44100,
+      "channelCount": 2
+    },
+    "external_native_application_recorded_actual_phone_pcm": {
+      "codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "decoded_samples": 115712,
+      "rms": 0.176023,
+      "peak": 0.259878,
+      "dominant_frequency_hz": 440.127,
+      "maximum_internal_silent_gap_seconds": 0.0,
+      "expected_external_fixture_frequency_hz": 440.0,
+      "hardware_note": "External sender identity/physical USB routing NOT verified"
+    },
+    "camera_switch_replaces_only_video_and_preserves_microphone_track": true,
+    "front_back_note": "Facing-mode request/new track verified; physical Android sensors unavailable.",
+    "selected_real_microphone_replaces_audio_only_and_updates_pc_metadata": true,
+    "voice_cleanup_switch_changes_actual_capture_constraints": true,
+    "stereo_control_requests_actual_two_channel_capture_on_test_browser": true,
+    "microphone_only_webrtc_without_phone_video": true,
+    "stop_stops_all_real_tracks_and_meter": true
+  },
+  "result": "PASS"
+}
